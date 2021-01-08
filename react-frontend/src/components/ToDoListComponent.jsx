@@ -10,6 +10,14 @@ class ToDoListComponent extends Component {
         }
         this.addToDo = this.addToDo.bind(this);
         this.editToDo = this.editToDo.bind(this);
+        this.deleteToDo = this.deleteToDo.bind(this);
+    }
+
+    deleteToDo(id) {
+        //rest api call
+        ToDoService.deleteToDo(id).then(res => {
+            this.setState({toDos: this.state.toDos.filter(toDo => toDo.id !== id)});
+        })
     }
 
     editToDo(id) {
@@ -56,6 +64,7 @@ class ToDoListComponent extends Component {
                                         <td> {toDo.deadline} </td>
                                         <td>
                                             <button onClick={() => this.editToDo(toDo.id)} className="btn btn-info">Update</button>
+                                            <button style={{marginLeft: "10px"}} onClick={() => this.deleteToDo(toDo.id)} className="btn btn-danger">Delete</button>
                                         </td>
                                     </tr>
                                 )

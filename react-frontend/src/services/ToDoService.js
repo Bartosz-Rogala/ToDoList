@@ -19,6 +19,10 @@ class ToDoService {
     updateToDo(toDo, toDoId) {
         return axios.put(TODO_API_BASE_URL + "/" + toDoId, toDo);
     }
+
+    deleteToDo(toDoId) {
+        return axios.delete(TODO_API_BASE_URL + "/" + toDoId);
+    }
     
 }
 
