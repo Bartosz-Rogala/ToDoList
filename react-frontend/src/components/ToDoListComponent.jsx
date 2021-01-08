@@ -11,6 +11,11 @@ class ToDoListComponent extends Component {
         this.addToDo = this.addToDo.bind(this);
         this.editToDo = this.editToDo.bind(this);
         this.deleteToDo = this.deleteToDo.bind(this);
+        this.viewToDo = this.viewToDo.bind(this);
+    }
+
+    viewToDo(id) {
+        this.props.history.push(`/view-todo/${id}`)
     }
 
     deleteToDo(id) {
@@ -65,6 +70,7 @@ class ToDoListComponent extends Component {
                                         <td>
                                             <button onClick={() => this.editToDo(toDo.id)} className="btn btn-info">Update</button>
                                             <button style={{marginLeft: "10px"}} onClick={() => this.deleteToDo(toDo.id)} className="btn btn-danger">Delete</button>
+                                            <button style={{marginLeft: "10px"}} onClick={() => this.viewToDo(toDo.id)} className="btn btn-info">View</button>
                                         </td>
                                     </tr>
                                 )
